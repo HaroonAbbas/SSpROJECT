@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="SupplySystem.PL.Sides"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SupplySystem.PL" xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             mc:Ignorable="d" 
+             FlowDirection="RightToLeft"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <dxlc:LayoutControl >
+            <dxlc:LayoutGroup Orientation="Vertical" Name="gTools">
+                <dxlc:LayoutItem Name="lbl_SIDE_NO" Label="رقم الجهة">
+                    <dxe:TextEdit Name="txt_SIDE_NO" IsReadOnly="True"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Name="lbl_SIDE_A_NAME" Label="اسم الجهة عربي">
+                    <dxe:TextEdit Name="txt_SIDE_A_NAME"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Name="lbl_SIDE_E_NAME" Label="اسم الجهة انجليزي">
+                    <dxe:TextEdit Name="txt_SIDE_E_NAME"/>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutControl>
+
+        <dxg:GridControl
+            Margin="0 12 0 0"
+            Name="dgView"
+            Grid.Column="1" Grid.ColumnSpan="2"
+            SelectedItemChanged="dgView_SelectedItemChanged">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="SIDE_NO" Name="col_SIDE_NO" Header="رقم الجهة" ReadOnly="True"/>
+                <dxg:GridColumn FieldName="SIDE_A_NAME" Name="col_SIDE_A_NAME" Header="اسم الجهة عربي" ReadOnly="True"/>
+                <dxg:GridColumn FieldName="SIDE_E_NAME" Name="col_SIDE_E_NAME" Header="اسم الجهة انجليزي" ReadOnly="True"/>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView 
+                    ShowAutoFilterRow="True"
+                    ShowCriteriaInAutoFilterRow="True"
+                    ShowGroupPanel="False"
+                    AutoWidth="True"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</UserControl>

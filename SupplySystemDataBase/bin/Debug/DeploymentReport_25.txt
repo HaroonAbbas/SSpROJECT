@@ -1,0 +1,18 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[SS_SupplyBonds]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[SS_SupplyBonds].[WAITING_ENTRY] is being dropped, data loss could occur.
+
+** User actions
+     Table rebuild
+       [dbo].[SS_SupplyBonds] (Table)
+
+** Supporting actions
+
+The column [dbo].[SS_SupplyBonds].[WAITING_ENTRY] is being dropped, data loss could occur.
+

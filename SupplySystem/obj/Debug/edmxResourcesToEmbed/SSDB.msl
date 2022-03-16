@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SSDB_PrimaryModelStoreContainer" CdmEntityContainer="SSDB_PrimaryEntities">
+    <EntitySetMapping Name="SS_Sides">
+      <EntityTypeMapping TypeName="SSDB_PrimaryModel.SS_Sides">
+        <MappingFragment StoreEntitySet="SS_Sides">
+          <ScalarProperty Name="SIDE_NO" ColumnName="SIDE_NO" />
+          <ScalarProperty Name="SIDE_TYPE" ColumnName="SIDE_TYPE" />
+          <ScalarProperty Name="SIDE_A_NAME" ColumnName="SIDE_A_NAME" />
+          <ScalarProperty Name="SIDE_E_NAME" ColumnName="SIDE_E_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SS_SpareParts">
+      <EntityTypeMapping TypeName="SSDB_PrimaryModel.SS_SpareParts">
+        <MappingFragment StoreEntitySet="SS_SpareParts">
+          <ScalarProperty Name="StorageNumber" ColumnName="StorageNumber" />
+          <ScalarProperty Name="PieceName" ColumnName="PieceName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SS_SupplyBonds">
+      <EntityTypeMapping TypeName="SSDB_PrimaryModel.SS_SupplyBonds">
+        <MappingFragment StoreEntitySet="SS_SupplyBonds">
+          <ScalarProperty Name="OP_ID" ColumnName="OP_ID" />
+          <ScalarProperty Name="OP_DATE" ColumnName="OP_DATE" />
+          <ScalarProperty Name="JULIAN_DATE" ColumnName="JULIAN_DATE" />
+          <ScalarProperty Name="SERIAL_NO" ColumnName="SERIAL_NO" />
+          <ScalarProperty Name="SEND_TO_SIDE_NO" ColumnName="SEND_TO_SIDE_NO" />
+          <ScalarProperty Name="StorageNumber" ColumnName="StorageNumber" />
+          <ScalarProperty Name="REQUEST_FOR" ColumnName="REQUEST_FOR" />
+          <ScalarProperty Name="FIELD_PRIORITY" ColumnName="FIELD_PRIORITY" />
+          <ScalarProperty Name="INITIAL_SIGNATURE" ColumnName="INITIAL_SIGNATURE" />
+          <ScalarProperty Name="REQUIRED_QTY" ColumnName="REQUIRED_QTY" />
+          <ScalarProperty Name="RECEIVED_QTY" ColumnName="RECEIVED_QTY" />
+          <ScalarProperty Name="WAITING_ENTRY_QTY" ColumnName="WAITING_ENTRY_QTY" />
+          <ScalarProperty Name="FOLLOW_UP_DATE" ColumnName="FOLLOW_UP_DATE" />
+          <ScalarProperty Name="COMPLETION_DATE" ColumnName="COMPLETION_DATE" />
+          <ScalarProperty Name="NOTES_SIDE_NO" ColumnName="NOTES_SIDE_NO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Units">
+      <EntityTypeMapping TypeName="SSDB_PrimaryModel.Unit">
+        <MappingFragment StoreEntitySet="Units">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="UnitIdName" ColumnName="UnitIdName" />
+          <ScalarProperty Name="BackUpPath" ColumnName="BackUpPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Get_SupplyBonds" FunctionName="SSDB_PrimaryModel.Store.Sp_Get_SupplyBonds">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SSDB_PrimaryModel.Sp_Get_SupplyBonds_Result">
+          <ScalarProperty Name="OP_ID" ColumnName="OP_ID" />
+          <ScalarProperty Name="OP_DATE" ColumnName="OP_DATE" />
+          <ScalarProperty Name="JULIAN_DATE" ColumnName="JULIAN_DATE" />
+          <ScalarProperty Name="SERIAL_NO" ColumnName="SERIAL_NO" />
+          <ScalarProperty Name="StorageNumber" ColumnName="StorageNumber" />
+          <ScalarProperty Name="REQUEST_FOR" ColumnName="REQUEST_FOR" />
+          <ScalarProperty Name="FIELD_PRIORITY" ColumnName="FIELD_PRIORITY" />
+          <ScalarProperty Name="INITIAL_SIGNATURE" ColumnName="INITIAL_SIGNATURE" />
+          <ScalarProperty Name="REQUIRED_QTY" ColumnName="REQUIRED_QTY" />
+          <ScalarProperty Name="RECEIVED_QTY" ColumnName="RECEIVED_QTY" />
+          <ScalarProperty Name="WAITING_ENTRY_QTY" ColumnName="WAITING_ENTRY_QTY" />
+          <ScalarProperty Name="FOLLOW_UP_DATE" ColumnName="FOLLOW_UP_DATE" />
+          <ScalarProperty Name="COMPLETION_DATE" ColumnName="COMPLETION_DATE" />
+          <ScalarProperty Name="SEND_TO_SIDE_NO" ColumnName="SEND_TO_SIDE_NO" />
+          <ScalarProperty Name="NOTES_SIDE_NO" ColumnName="NOTES_SIDE_NO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Insert_SupplyBonds" FunctionName="SSDB_PrimaryModel.Store.Sp_Insert_SupplyBonds" />
+    <FunctionImportMapping FunctionImportName="Sp_Update_SupplyBonds" FunctionName="SSDB_PrimaryModel.Store.Sp_Update_SupplyBonds" />
+  </EntityContainerMapping>
+</Mapping>

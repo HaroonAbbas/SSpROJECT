@@ -1,0 +1,16 @@
+C:\Users\DELL\source\repos\SupplySystem\SupplySystemDataBase\bin\Debug\SupplySystemDataBase.dacpac
+C:\Users\DELL\source\repos\SupplySystem\SupplySystemDataBase\bin\Debug\SupplySystemDataBase.dll
+C:\Users\DELL\source\repos\SupplySystem\SupplySystemDataBase\bin\Debug\SupplySystemDataBase.pdb
+C:\Users\DELL\source\repos\SupplySystem\SupplySystemDataBase\obj\Debug\SupplySystemDataBase.dll
+C:\Users\DELL\source\repos\SupplySystem\SupplySystemDataBase\obj\Debug\SupplySystemDataBase.pdb
+C:\Users\DELL\source\repos\SupplySystem\SupplySystemDataBase\obj\Debug\SupplySystemDataBase.sqlproj.AssemblyReference.cache
+E:\Projects\SupplySystem\SupplySystemDataBase\bin\Debug\SupplySystemDataBase.dacpac
+E:\Projects\SupplySystem\SupplySystemDataBase\bin\Debug\SupplySystemDataBase.dll
+E:\Projects\SupplySystem\SupplySystemDataBase\bin\Debug\SupplySystemDataBase.pdb
+E:\Projects\SupplySystem\SupplySystemDataBase\obj\Debug\SupplySystemDataBase.dll
+E:\Projects\SupplySystem\SupplySystemDataBase\obj\Debug\SupplySystemDataBase.pdb
+E:\Projects\SupplySystem\SupplySystemDataBase\obj\Debug\SupplySystemDataBase.sqlproj.AssemblyReference.cache
+E:\Projects\SupplySystem\SupplySystemDataBase\obj\Debug\Model.xml
+E:\Projects\SupplySystem\SupplySystemDataBase\obj\Debug\refactor.xml
+E:\Projects\SupplySystem\SupplySystemDataBase\obj\Debug\postdeploy.sql
+E:\Projects\SupplySystem\SupplySystemDataBase\obj\Debug\predeploy.sql

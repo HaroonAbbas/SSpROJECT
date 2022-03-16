@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SSDB_PrimaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SS_Sides">
+    <Key>
+      <PropertyRef Name="SIDE_NO" />
+      <PropertyRef Name="SIDE_TYPE" />
+    </Key>
+    <Property Name="SIDE_NO" Type="int" Nullable="false" />
+    <Property Name="SIDE_TYPE" Type="int" Nullable="false" />
+    <Property Name="SIDE_A_NAME" Type="nvarchar(max)" />
+    <Property Name="SIDE_E_NAME" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SS_SpareParts">
+    <Key>
+      <PropertyRef Name="StorageNumber" />
+    </Key>
+    <Property Name="StorageNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PieceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SS_SupplyBonds">
+    <Key>
+      <PropertyRef Name="OP_ID" />
+    </Key>
+    <Property Name="OP_ID" Type="int" Nullable="false" />
+    <Property Name="OP_DATE" Type="datetime" />
+    <Property Name="JULIAN_DATE" Type="nvarchar" MaxLength="10" />
+    <Property Name="SERIAL_NO" Type="nvarchar" MaxLength="10" />
+    <Property Name="SEND_TO_SIDE_NO" Type="int" />
+    <Property Name="StorageNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="REQUEST_FOR" Type="nvarchar" MaxLength="50" />
+    <Property Name="FIELD_PRIORITY" Type="nvarchar" MaxLength="50" />
+    <Property Name="INITIAL_SIGNATURE" Type="nvarchar" MaxLength="50" />
+    <Property Name="REQUIRED_QTY" Type="int" />
+    <Property Name="RECEIVED_QTY" Type="int" />
+    <Property Name="WAITING_ENTRY_QTY" Type="int" />
+    <Property Name="FOLLOW_UP_DATE" Type="nvarchar" MaxLength="10" />
+    <Property Name="COMPLETION_DATE" Type="nvarchar" MaxLength="10" />
+    <Property Name="NOTES_SIDE_NO" Type="int" />
+  </EntityType>
+  <EntityType Name="Units">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="UnitName" Type="nvarchar" MaxLength="800" Nullable="false" />
+    <Property Name="UnitIdName" Type="nvarchar" MaxLength="800" Nullable="false" />
+    <Property Name="BackUpPath" Type="nvarchar" MaxLength="800" />
+  </EntityType>
+  <Function Name="Sp_Get_SupplyBonds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JULIAN_DATE" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_Insert_SupplyBonds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OP_ID" Type="int" Mode="In" />
+    <Parameter Name="OP_DATE" Type="datetime" Mode="In" />
+    <Parameter Name="JULIAN_DATE" Type="nvarchar" Mode="In" />
+    <Parameter Name="SERIAL_NO" Type="nvarchar" Mode="In" />
+    <Parameter Name="SEND_TO_SIDE_NO" Type="int" Mode="In" />
+    <Parameter Name="StorageNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="REQUEST_FOR" Type="nvarchar" Mode="In" />
+    <Parameter Name="FIELD_PRIORITY" Type="nvarchar" Mode="In" />
+    <Parameter Name="INITIAL_SIGNATURE" Type="nvarchar" Mode="In" />
+    <Parameter Name="REQUIRED_QTY" Type="int" Mode="In" />
+    <Parameter Name="RECEIVED_QTY" Type="int" Mode="In" />
+    <Parameter Name="WAITING_ENTRY_QTY" Type="int" Mode="In" />
+    <Parameter Name="FOLLOW_UP_DATE" Type="nvarchar" Mode="In" />
+    <Parameter Name="COMPLETION_DATE" Type="nvarchar" Mode="In" />
+    <Parameter Name="NOTES_SIDE_NO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_Update_SupplyBonds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OP_ID" Type="int" Mode="In" />
+    <Parameter Name="OP_DATE" Type="datetime" Mode="In" />
+    <Parameter Name="JULIAN_DATE" Type="nvarchar" Mode="In" />
+    <Parameter Name="SERIAL_NO" Type="nvarchar" Mode="In" />
+    <Parameter Name="SEND_TO_SIDE_NO" Type="int" Mode="In" />
+    <Parameter Name="StorageNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="REQUEST_FOR" Type="nvarchar" Mode="In" />
+    <Parameter Name="FIELD_PRIORITY" Type="nvarchar" Mode="In" />
+    <Parameter Name="INITIAL_SIGNATURE" Type="nvarchar" Mode="In" />
+    <Parameter Name="REQUIRED_QTY" Type="int" Mode="In" />
+    <Parameter Name="RECEIVED_QTY" Type="int" Mode="In" />
+    <Parameter Name="WAITING_ENTRY_QTY" Type="int" Mode="In" />
+    <Parameter Name="FOLLOW_UP_DATE" Type="nvarchar" Mode="In" />
+    <Parameter Name="COMPLETION_DATE" Type="nvarchar" Mode="In" />
+    <Parameter Name="NOTES_SIDE_NO" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="SSDB_PrimaryModelStoreContainer">
+    <EntitySet Name="SS_Sides" EntityType="Self.SS_Sides" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SS_SpareParts" EntityType="Self.SS_SpareParts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SS_SupplyBonds" EntityType="Self.SS_SupplyBonds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

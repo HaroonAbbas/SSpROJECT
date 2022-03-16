@@ -1,0 +1,2855 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSchemaModel FileFormatVersion="1.2" SchemaVersion="2.9" DspName="Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider" CollationLcid="1025" CollationCaseSensitive="False" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+	<Header>
+		<CustomData Category="AnsiNulls">
+			<Metadata Name="AnsiNulls" Value="True" />
+		</CustomData>
+		<CustomData Category="QuotedIdentifier">
+			<Metadata Name="QuotedIdentifier" Value="True" />
+		</CustomData>
+		<CustomData Category="CompatibilityMode">
+			<Metadata Name="CompatibilityMode" Value="130" />
+		</CustomData>
+		<CustomData Category="Reference" Type="Assembly">
+			<Metadata Name="LogicalName" Value="SupplySystemDataBase.dll" />
+			<Metadata Name="FileName" Value="E:\PROJECTS\SUPPLYSYSTEM\SUPPLYSYSTEMDATABASE\OBJ\DEBUG\SUPPLYSYSTEMDATABASE.DLL" />
+			<Metadata Name="AssemblyName" Value="SupplySystemDataBase" />
+			<Metadata Name="PermissionSet" Value="SAFE" />
+			<Metadata Name="Owner" Value="" />
+			<Metadata Name="GenerateSqlClrDdl" Value="True" />
+			<Metadata Name="IsVisible" Value="True" />
+			<Metadata Name="IsModelAware" Value="True" />
+			<Metadata Name="SkipCreationIfEmpty" Value="True" />
+			<Metadata Name="AssemblySymbolsName" Value="E:\Projects\SupplySystem\SupplySystemDataBase\obj\Debug\SupplySystemDataBase.pdb" />
+		</CustomData>
+		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
+	</Header>
+	<Model>
+		<Element Type="SqlDatabaseOptions">
+			<Property Name="Collation" Value="Arabic_CI_AS" />
+			<Property Name="IsAnsiNullDefaultOn" Value="True" />
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="IsAnsiPaddingOn" Value="False" />
+			<Property Name="IsTornPageProtectionOn" Value="False" />
+			<Property Name="IsFullTextEnabled" Value="True" />
+			<Property Name="PageVerifyMode" Value="3" />
+			<Property Name="DefaultLanguage" Value="Arabic" />
+			<Property Name="DefaultFullTextLanguage" Value="Arabic" />
+			<Property Name="QueryStoreStaleQueryThreshold" Value="367" />
+			<Relationship Name="DefaultFilegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[SS_Users].[U_ID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[SS_Users]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[SS_SpareParts].[StorageNumber]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[SS_SupplyBonds].[OP_ID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[SS_Units].[UnitId]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[SS_Units]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_SS_Sides]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[SS_Sides].[SIDE_NO]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[SS_Sides].[SIDE_TYPE]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[SS_Sides]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[Sp_Get_SupplyBonds]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	SELECT P.OP_ID
+      ,P.OP_DATE
+      ,P.JULIAN_DATE
+      ,P.SERIAL_NO      
+      ,P.StorageNumber
+      ,P.REQUEST_FOR
+      ,P.FIELD_PRIORITY
+      ,P.INITIAL_SIGNATURE
+      ,P.REQUIRED_QTY
+      ,P.RECEIVED_QTY
+      ,P.WAITING_ENTRY_QTY
+      ,P.FOLLOW_UP_DATE
+      ,P.COMPLETION_DATE
+	,(SELECT SIDE_A_NAME FROM SS_Sides WHERE SIDE_TYPE=1 AND SIDE_NO=P.SEND_TO_SIDE_NO) SEND_TO_SIDE_NO
+	  ,(SELECT SIDE_A_NAME FROM SS_Sides WHERE SIDE_TYPE=2 AND SIDE_NO=P.NOTES_SIDE_NO) NOTES_SIDE_NO
+	  	  ,u.UnitName
+	  ,u.UnitIdName
+	 ,parts.PieceName
+  FROM SS_SupplyBonds P
+  LEFT JOIN SS_SpareParts parts  ON P.StorageNumber=parts.StorageNumber
+  join dbo.SS_Units u on u.UnitId=1
+  where p.JULIAN_DATE=@JULIAN_DATE]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Units]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Units].[UnitId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[OP_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[OP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[JULIAN_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[SERIAL_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[REQUEST_FOR]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[FIELD_PRIORITY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[INITIAL_SIGNATURE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[REQUIRED_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[RECEIVED_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[WAITING_ENTRY_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[FOLLOW_UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[COMPLETION_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_A_NAME]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_TYPE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[SEND_TO_SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[NOTES_SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Units].[UnitName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Units].[UnitIdName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[PieceName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[JULIAN_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Get_SupplyBonds].[@JULIAN_DATE]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Get_SupplyBonds].[@JULIAN_DATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="870" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].Sp_Get_SupplyBonds&#xD;&#xA;&#x9;--@OP_ID int,&#xD;&#xA;&#x9;@JULIAN_DATE nvarchar(10)       &#xD;&#xA;&#x9;--@SERIAL_NO nvarchar(10)         &#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[Sp_Insert_Sides]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+begin
+	INSERT INTO [dbo].[SS_Sides]
+           ([SIDE_NO]
+           ,[SIDE_TYPE]
+           ,[SIDE_A_NAME]
+           ,[SIDE_E_NAME]
+           ,[AD_U_ID]
+           ,[AD_DATE]
+           ,[AD_TRMNL_NM])
+     VALUES
+           (@SIDE_NO                     
+           ,@SIDE_TYPE                   
+           ,@SIDE_A_NAME                 
+           ,@SIDE_E_NAME                 
+           ,@AD_U_ID                     
+           ,@AD_DATE                     
+           ,@AD_TRMNL_NM )
+end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[SS_Sides]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_TYPE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_A_NAME]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_E_NAME]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[AD_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[AD_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[AD_TRMNL_NM]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_Sides].[@SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_Sides].[@SIDE_TYPE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_Sides].[@SIDE_A_NAME]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_Sides].[@SIDE_E_NAME]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_Sides].[@AD_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_Sides].[@AD_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_Sides].[@AD_TRMNL_NM]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_Sides].[@SIDE_NO]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_Sides].[@SIDE_TYPE]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_Sides].[@SIDE_A_NAME]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_Sides].[@SIDE_E_NAME]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_Sides].[@AD_U_ID]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_Sides].[@AD_DATE]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_Sides].[@AD_TRMNL_NM]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="766" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[Sp_Insert_Sides]&#xD;&#xA;&#x9;@SIDE_NO int=NULL,&#xD;&#xA;&#x9;@SIDE_TYPE int=NULL,&#xD;&#xA;&#x9;@SIDE_A_NAME nvarchar (max)= NULL,&#xD;&#xA;&#x9;@SIDE_E_NAME nvarchar (max)= NULL,&#xD;&#xA;&#x9;@AD_U_ID int = NULL,&#xD;&#xA;&#x9;@AD_DATE datetime = NULL,&#xD;&#xA;&#x9;@AD_TRMNL_NM nvarchar (50)= NULL&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[Sp_Insert_SpareParts]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+begin
+
+INSERT INTO [dbo].[SS_SpareParts]
+           ([StorageNumber]
+           ,[PieceName]
+           ,[AD_U_ID]
+           ,[AD_DATE]
+           ,[AD_TRMNL_NM])
+     VALUES
+           (@StorageNumber          
+           ,@PieceName              
+           ,@AD_U_ID                
+           ,@AD_DATE                
+           ,@AD_TRMNL_NM)
+end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[PieceName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[AD_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[AD_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[AD_TRMNL_NM]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SpareParts].[@StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SpareParts].[@PieceName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SpareParts].[@AD_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SpareParts].[@AD_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SpareParts].[@AD_TRMNL_NM]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SpareParts].[@PieceName]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SpareParts].[@StorageNumber]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SpareParts].[@AD_U_ID]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SpareParts].[@AD_DATE]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SpareParts].[@AD_TRMNL_NM]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="574" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[Sp_Insert_SpareParts]&#xD;&#xA;&#x9;@PieceName nvarchar(max)=null,&#xD;&#xA;&#x9;@StorageNumber&#x9;nvarchar(max)=null,&#xD;&#xA;&#x9;@AD_U_ID int = NULL,&#xD;&#xA;&#x9;@AD_DATE datetime = NULL,&#xD;&#xA;&#x9;@AD_TRMNL_NM nvarchar (50)= NULL&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[Sp_Insert_SupplyBonds]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	
+INSERT INTO [dbo].[SS_SupplyBonds]
+           ([OP_ID]
+           ,[OP_DATE]
+           ,[JULIAN_DATE]
+           ,[SERIAL_NO]
+           ,[SEND_TO_SIDE_NO]
+           ,[StorageNumber]
+           ,[REQUEST_FOR]
+           ,[FIELD_PRIORITY]
+           ,[INITIAL_SIGNATURE]
+           ,[REQUIRED_QTY]
+           ,[RECEIVED_QTY]
+           ,[WAITING_ENTRY_QTY]
+           ,[FOLLOW_UP_DATE]
+           ,[COMPLETION_DATE]
+           ,[NOTES_SIDE_NO]
+           ,[AD_U_ID]
+           ,[AD_DATE]
+           ,[AD_TRMNL_NM])
+     VALUES
+           (@OP_ID                           
+           ,@OP_DATE                         
+           ,@JULIAN_DATE                     
+           ,@SERIAL_NO                       
+           ,@SEND_TO_SIDE_NO                 
+           ,@StorageNumber                   
+           ,@REQUEST_FOR                     
+           ,@FIELD_PRIORITY                  
+           ,@INITIAL_SIGNATURE               
+           ,@REQUIRED_QTY                    
+           ,@RECEIVED_QTY                    
+           ,@WAITING_ENTRY_QTY               
+           ,@FOLLOW_UP_DATE                  
+           ,@COMPLETION_DATE                 
+           ,@NOTES_SIDE_NO
+           ,@AD_U_ID                     
+           ,@AD_DATE                     
+           ,@AD_TRMNL_NM )
+
+RETURN]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[OP_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[OP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[JULIAN_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[SERIAL_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[SEND_TO_SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[REQUEST_FOR]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[FIELD_PRIORITY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[INITIAL_SIGNATURE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[REQUIRED_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[RECEIVED_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[WAITING_ENTRY_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[FOLLOW_UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[COMPLETION_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[NOTES_SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[AD_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[AD_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[AD_TRMNL_NM]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@OP_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@OP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@JULIAN_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@SERIAL_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@SEND_TO_SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@REQUEST_FOR]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@FIELD_PRIORITY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@INITIAL_SIGNATURE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@REQUIRED_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@RECEIVED_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@WAITING_ENTRY_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@FOLLOW_UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@COMPLETION_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@NOTES_SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@AD_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@AD_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Insert_SupplyBonds].[@AD_TRMNL_NM]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@OP_ID]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@OP_DATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@JULIAN_DATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@SERIAL_NO]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@SEND_TO_SIDE_NO]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@StorageNumber]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@REQUEST_FOR]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@FIELD_PRIORITY]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@INITIAL_SIGNATURE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@REQUIRED_QTY]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@RECEIVED_QTY]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@WAITING_ENTRY_QTY]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@FOLLOW_UP_DATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@COMPLETION_DATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@NOTES_SIDE_NO]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@AD_U_ID]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@AD_DATE]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Insert_SupplyBonds].[@AD_TRMNL_NM]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="2005" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[Sp_Insert_SupplyBonds]&#xD;&#xA;&#x9;@OP_ID int,&#xD;&#xA;&#x9;@OP_DATE  datetime              ,&#xD;&#xA;&#x9;@JULIAN_DATE nvarchar(10)       ,&#xD;&#xA;&#x9;@SERIAL_NO nvarchar(10)         ,&#xD;&#xA;&#x9;@SEND_TO_SIDE_NO int            ,&#xD;&#xA;&#x9;@StorageNumber nvarchar(50)     ,&#xD;&#xA;&#x9;@REQUEST_FOR nvarchar(50)       ,&#xD;&#xA;&#x9;@FIELD_PRIORITY nvarchar(50)    ,&#xD;&#xA;&#x9;@INITIAL_SIGNATURE nvarchar(50) ,&#xD;&#xA;&#x9;@REQUIRED_QTY int               ,&#xD;&#xA;&#x9;@RECEIVED_QTY int               ,&#xD;&#xA;&#x9;@WAITING_ENTRY_QTY int          ,&#xD;&#xA;&#x9;@FOLLOW_UP_DATE nvarchar(10)    ,&#xD;&#xA;&#x9;@COMPLETION_DATE nvarchar(10)   ,&#xD;&#xA;&#x9;@NOTES_SIDE_NO int ,&#xD;&#xA;    @AD_U_ID int = NULL,&#xD;&#xA;&#x9;@AD_DATE datetime = NULL,&#xD;&#xA;&#x9;@AD_TRMNL_NM nvarchar (50)= NULL&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[Sp_Update_Sides]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+begin
+UPDATE dbo.SS_Sides
+   SET   
+ SIDE_NO = @SIDE_NO            
+,SIDE_TYPE = @SIDE_TYPE       
+,SIDE_A_NAME = @SIDE_A_NAME    
+,SIDE_E_NAME = @SIDE_E_NAME    
+,UP_U_ID = @UP_U_ID            
+,UP_DATE = @UP_DATE            
+,UP_TRMNL_NM = @UP_TRMNL_NM    
+where SIDE_NO=@SIDE_NO and SIDE_TYPE=@SIDE_TYPE
+end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[SS_Sides]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_Sides].[@SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_TYPE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_Sides].[@SIDE_TYPE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_A_NAME]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_Sides].[@SIDE_A_NAME]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[SIDE_E_NAME]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_Sides].[@SIDE_E_NAME]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[UP_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_Sides].[@UP_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_Sides].[@UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_Sides].[UP_TRMNL_NM]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_Sides].[@UP_TRMNL_NM]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_Sides].[@SIDE_NO]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_Sides].[@SIDE_TYPE]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_Sides].[@SIDE_A_NAME]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_Sides].[@SIDE_E_NAME]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_Sides].[@UP_U_ID]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_Sides].[@UP_DATE]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_Sides].[@UP_TRMNL_NM]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="571" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[Sp_Update_Sides]&#xD;&#xA;&#x9;@SIDE_NO int=NULL,&#xD;&#xA;&#x9;@SIDE_TYPE int=NULL,&#xD;&#xA;&#x9;@SIDE_A_NAME nvarchar (max)= NULL,&#xD;&#xA;&#x9;@SIDE_E_NAME nvarchar (max)= NULL,&#xD;&#xA;&#x9;@UP_U_ID int = NULL,&#xD;&#xA;&#x9;@UP_DATE datetime = NULL,&#xD;&#xA;&#x9;@UP_TRMNL_NM nvarchar (50)= NULL&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[Sp_Update_SpareParts]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+begin
+UPDATE dbo.SS_SpareParts
+   SET StorageNumber = @StorageNumber        
+      ,PieceName = @PieceName                
+      ,UP_U_ID = @UP_U_ID                    
+      ,UP_DATE = @UP_DATE                    
+      ,UP_TRMNL_NM = @UP_TRMNL_NM
+WHERE StorageNumber=@StorageNumber
+end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SpareParts].[@StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[PieceName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SpareParts].[@PieceName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[UP_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SpareParts].[@UP_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SpareParts].[@UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SpareParts].[UP_TRMNL_NM]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SpareParts].[@UP_TRMNL_NM]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SpareParts].[@PieceName]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SpareParts].[@StorageNumber]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SpareParts].[@UP_U_ID]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SpareParts].[@UP_DATE]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SpareParts].[@UP_TRMNL_NM]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="503" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[Sp_Update_SpareParts]&#xD;&#xA;&#x9;&#x9;@PieceName nvarchar(max)=null,&#xD;&#xA;&#x9;@StorageNumber&#x9;nvarchar(max)=null,&#xD;&#xA;&#x9;@UP_U_ID int = NULL,&#xD;&#xA;&#x9;@UP_DATE datetime = NULL,&#xD;&#xA;&#x9;@UP_TRMNL_NM nvarchar (50)= NULL&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[Sp_Update_SupplyBonds]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	UPDATE SS_SupplyBonds
+	   SET OP_ID = @OP_ID,                            
+	      OP_DATE = @OP_DATE,                         
+	      JULIAN_DATE = @JULIAN_DATE,                 
+	      SERIAL_NO = @SERIAL_NO,                     
+	      SEND_TO_SIDE_NO = @SEND_TO_SIDE_NO,         
+	      StorageNumber = @StorageNumber,             
+	      REQUEST_FOR = @REQUEST_FOR,                 
+	      FIELD_PRIORITY = @FIELD_PRIORITY,           
+	      INITIAL_SIGNATURE = @INITIAL_SIGNATURE,     
+	      REQUIRED_QTY = @REQUIRED_QTY,               
+	      RECEIVED_QTY = @RECEIVED_QTY,               
+	      WAITING_ENTRY_QTY = @WAITING_ENTRY_QTY,     
+	      FOLLOW_UP_DATE = @FOLLOW_UP_DATE,           
+	      COMPLETION_DATE = @COMPLETION_DATE,         
+	      NOTES_SIDE_NO = @NOTES_SIDE_NO  
+		  ,UP_U_ID = @UP_U_ID            
+,UP_DATE = @UP_DATE            
+,UP_TRMNL_NM = @UP_TRMNL_NM    
+	 WHERE OP_ID = @OP_ID
+RETURN]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[OP_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@OP_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[OP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@OP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[JULIAN_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@JULIAN_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[SERIAL_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@SERIAL_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[SEND_TO_SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@SEND_TO_SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@StorageNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[REQUEST_FOR]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@REQUEST_FOR]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[FIELD_PRIORITY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@FIELD_PRIORITY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[INITIAL_SIGNATURE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@INITIAL_SIGNATURE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[REQUIRED_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@REQUIRED_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[RECEIVED_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@RECEIVED_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[WAITING_ENTRY_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@WAITING_ENTRY_QTY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[FOLLOW_UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@FOLLOW_UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[COMPLETION_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@COMPLETION_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[NOTES_SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@NOTES_SIDE_NO]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[UP_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@UP_U_ID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@UP_DATE]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SS_SupplyBonds].[UP_TRMNL_NM]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Sp_Update_SupplyBonds].[@UP_TRMNL_NM]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@OP_ID]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@OP_DATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@JULIAN_DATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@SERIAL_NO]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@SEND_TO_SIDE_NO]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@StorageNumber]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@REQUEST_FOR]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@FIELD_PRIORITY]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@INITIAL_SIGNATURE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@REQUIRED_QTY]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@RECEIVED_QTY]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@WAITING_ENTRY_QTY]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@FOLLOW_UP_DATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@COMPLETION_DATE]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@NOTES_SIDE_NO]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@UP_U_ID]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@UP_DATE]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[Sp_Update_SupplyBonds].[@UP_TRMNL_NM]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[NULL]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="1597" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[Sp_Update_SupplyBonds]&#xD;&#xA;&#x9;@OP_ID int,&#xD;&#xA;&#x9;@OP_DATE  datetime              ,&#xD;&#xA;&#x9;@JULIAN_DATE nvarchar(10)       ,&#xD;&#xA;&#x9;@SERIAL_NO nvarchar(10)         ,&#xD;&#xA;&#x9;@SEND_TO_SIDE_NO int            ,&#xD;&#xA;&#x9;@StorageNumber nvarchar(50)     ,&#xD;&#xA;&#x9;@REQUEST_FOR nvarchar(50)       ,&#xD;&#xA;&#x9;@FIELD_PRIORITY nvarchar(50)    ,&#xD;&#xA;&#x9;@INITIAL_SIGNATURE nvarchar(50) ,&#xD;&#xA;&#x9;@REQUIRED_QTY int               ,&#xD;&#xA;&#x9;@RECEIVED_QTY int               ,&#xD;&#xA;&#x9;@WAITING_ENTRY_QTY int          ,&#xD;&#xA;&#x9;@FOLLOW_UP_DATE nvarchar(10)    ,&#xD;&#xA;&#x9;@COMPLETION_DATE nvarchar(10)   ,&#xD;&#xA;&#x9;@NOTES_SIDE_NO int              ,&#xD;&#xA;&#x9;&#x9;@UP_U_ID int = NULL,&#xD;&#xA;&#x9;@UP_DATE datetime = NULL,&#xD;&#xA;&#x9;@UP_TRMNL_NM nvarchar (50)= NULL&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[SS_Sides]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Sides].[SIDE_NO]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Sides].[SIDE_TYPE]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Sides].[SIDE_A_NAME]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Sides].[SIDE_E_NAME]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Sides].[AD_U_ID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Sides].[AD_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Sides].[UP_U_ID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Sides].[UP_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Sides].[AD_TRMNL_NM]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Sides].[UP_TRMNL_NM]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="7" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[SS_SpareParts]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SpareParts].[StorageNumber]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="4" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SpareParts].[PieceName]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SpareParts].[AD_U_ID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SpareParts].[AD_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SpareParts].[UP_U_ID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SpareParts].[UP_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SpareParts].[AD_TRMNL_NM]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SpareParts].[UP_TRMNL_NM]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[SS_SupplyBonds]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[OP_ID]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="5" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[OP_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[JULIAN_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[SERIAL_NO]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[SEND_TO_SIDE_NO]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[StorageNumber]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[REQUEST_FOR]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[FIELD_PRIORITY]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[INITIAL_SIGNATURE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[REQUIRED_QTY]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[RECEIVED_QTY]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[WAITING_ENTRY_QTY]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[FOLLOW_UP_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[COMPLETION_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="10" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[NOTES_SIDE_NO]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[AD_U_ID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[AD_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[UP_U_ID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[UP_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[AD_TRMNL_NM]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_SupplyBonds].[UP_TRMNL_NM]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[SS_Units]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Units].[UnitId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="6" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Units].[UnitName]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="800" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Units].[UnitIdName]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="800" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Units].[BackUpPath]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="800" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[SS_Users]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[U_ID]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="3" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[U_NAME]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[EMAIL]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[USR_PASSWORD]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[INACTIVE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[UNIT_NO]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[AD_U_ID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[AD_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[UP_U_ID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[UP_DATE]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[AD_TRMNL_NM]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[SS_Users].[UP_TRMNL_NM]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+	</Model>
+</DataSchemaModel>

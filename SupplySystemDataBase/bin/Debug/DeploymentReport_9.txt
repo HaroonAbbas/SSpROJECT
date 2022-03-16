@@ -1,0 +1,28 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column BackUpPath in table [dbo].[Units] is currently  VARCHAR (800) COLLATE
+         Latin1_General_100_CI_AS_SC_UTF8 NOT NULL but is being changed to  NVARCHAR (800) NOT NULL. Data loss could occur and
+         deployment may fail if the column contains data that is incompatible with type  NVARCHAR (800) NOT NULL.
+       The type for column UnitIdName in table [dbo].[Units] is currently  VARCHAR (800) COLLATE
+         Latin1_General_100_CI_AS_SC_UTF8 NOT NULL but is being changed to  NVARCHAR (800) NOT NULL. Data loss could occur and
+         deployment may fail if the column contains data that is incompatible with type  NVARCHAR (800) NOT NULL.
+       The type for column UnitName in table [dbo].[Units] is currently  VARCHAR (800) COLLATE Latin1_General_100_CI_AS_SC_UTF8
+         NOT NULL but is being changed to  NVARCHAR (800) NOT NULL. Data loss could occur and deployment may fail if the column
+         contains data that is incompatible with type  NVARCHAR (800) NOT NULL.
+
+** User actions
+     Alter
+       [dbo].[Units] (Table)
+
+** Supporting actions
+
+The type for column BackUpPath in table [dbo].[Units] is currently  VARCHAR (800) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL but is being changed to  NVARCHAR (800) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  NVARCHAR (800) NOT NULL.
+The type for column UnitIdName in table [dbo].[Units] is currently  VARCHAR (800) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL but is being changed to  NVARCHAR (800) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  NVARCHAR (800) NOT NULL.
+The type for column UnitName in table [dbo].[Units] is currently  VARCHAR (800) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL but is being changed to  NVARCHAR (800) NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  NVARCHAR (800) NOT NULL.
+

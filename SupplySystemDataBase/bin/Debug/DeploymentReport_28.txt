@@ -1,0 +1,20 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[SS_Sides] (Table)
+       [dbo].[SS_SpareParts] (Table)
+       [dbo].[SS_SupplyBonds] (Table)
+       [dbo].[Units] (Table)
+       [dbo].[Sp_Insert_SupplyBonds] (Procedure)
+       [dbo].[Sp_Update_SupplyBonds] (Procedure)
+
+** Supporting actions

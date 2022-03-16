@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SSDB_PrimaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SS_Sides">
+    <Key>
+      <PropertyRef Name="SIDE_NO" />
+      <PropertyRef Name="SIDE_TYPE" />
+    </Key>
+    <Property Name="SIDE_NO" Type="Int32" Nullable="false" />
+    <Property Name="SIDE_TYPE" Type="Int32" Nullable="false" />
+    <Property Name="SIDE_A_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SIDE_E_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SS_SpareParts">
+    <Key>
+      <PropertyRef Name="StorageNumber" />
+    </Key>
+    <Property Name="StorageNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PieceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SS_SupplyBonds">
+    <Key>
+      <PropertyRef Name="OP_ID" />
+    </Key>
+    <Property Name="OP_ID" Type="Int32" Nullable="false" />
+    <Property Name="OP_DATE" Type="DateTime" Precision="3" />
+    <Property Name="JULIAN_DATE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SERIAL_NO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SEND_TO_SIDE_NO" Type="Int32" />
+    <Property Name="StorageNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="REQUEST_FOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FIELD_PRIORITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="INITIAL_SIGNATURE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="REQUIRED_QTY" Type="Int32" />
+    <Property Name="RECEIVED_QTY" Type="Int32" />
+    <Property Name="WAITING_ENTRY_QTY" Type="Int32" />
+    <Property Name="FOLLOW_UP_DATE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="COMPLETION_DATE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="NOTES_SIDE_NO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="UnitName" Type="String" MaxLength="800" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitIdName" Type="String" MaxLength="800" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BackUpPath" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="SSDB_PrimaryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SS_Sides" EntityType="Self.SS_Sides" />
+    <EntitySet Name="SS_SpareParts" EntityType="Self.SS_SpareParts" />
+    <EntitySet Name="SS_SupplyBonds" EntityType="Self.SS_SupplyBonds" />
+    <EntitySet Name="Units" EntityType="Self.Unit" />
+    <FunctionImport Name="Sp_Get_SupplyBonds" ReturnType="Collection(SSDB_PrimaryModel.Sp_Get_SupplyBonds_Result)">
+      <Parameter Name="JULIAN_DATE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Insert_SupplyBonds">
+      <Parameter Name="OP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="OP_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="JULIAN_DATE" Mode="In" Type="String" />
+      <Parameter Name="SERIAL_NO" Mode="In" Type="String" />
+      <Parameter Name="SEND_TO_SIDE_NO" Mode="In" Type="Int32" />
+      <Parameter Name="StorageNumber" Mode="In" Type="String" />
+      <Parameter Name="REQUEST_FOR" Mode="In" Type="String" />
+      <Parameter Name="FIELD_PRIORITY" Mode="In" Type="String" />
+      <Parameter Name="INITIAL_SIGNATURE" Mode="In" Type="String" />
+      <Parameter Name="REQUIRED_QTY" Mode="In" Type="Int32" />
+      <Parameter Name="RECEIVED_QTY" Mode="In" Type="Int32" />
+      <Parameter Name="WAITING_ENTRY_QTY" Mode="In" Type="Int32" />
+      <Parameter Name="FOLLOW_UP_DATE" Mode="In" Type="String" />
+      <Parameter Name="COMPLETION_DATE" Mode="In" Type="String" />
+      <Parameter Name="NOTES_SIDE_NO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Update_SupplyBonds">
+      <Parameter Name="OP_ID" Mode="In" Type="Int32" />
+      <Parameter Name="OP_DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="JULIAN_DATE" Mode="In" Type="String" />
+      <Parameter Name="SERIAL_NO" Mode="In" Type="String" />
+      <Parameter Name="SEND_TO_SIDE_NO" Mode="In" Type="Int32" />
+      <Parameter Name="StorageNumber" Mode="In" Type="String" />
+      <Parameter Name="REQUEST_FOR" Mode="In" Type="String" />
+      <Parameter Name="FIELD_PRIORITY" Mode="In" Type="String" />
+      <Parameter Name="INITIAL_SIGNATURE" Mode="In" Type="String" />
+      <Parameter Name="REQUIRED_QTY" Mode="In" Type="Int32" />
+      <Parameter Name="RECEIVED_QTY" Mode="In" Type="Int32" />
+      <Parameter Name="WAITING_ENTRY_QTY" Mode="In" Type="Int32" />
+      <Parameter Name="FOLLOW_UP_DATE" Mode="In" Type="String" />
+      <Parameter Name="COMPLETION_DATE" Mode="In" Type="String" />
+      <Parameter Name="NOTES_SIDE_NO" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Sp_Get_SupplyBonds_Result">
+    <Property Type="Int32" Name="OP_ID" Nullable="false" />
+    <Property Type="DateTime" Name="OP_DATE" Nullable="true" Precision="23" />
+    <Property Type="String" Name="JULIAN_DATE" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SERIAL_NO" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="StorageNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="REQUEST_FOR" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FIELD_PRIORITY" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="INITIAL_SIGNATURE" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="REQUIRED_QTY" Nullable="true" />
+    <Property Type="Int32" Name="RECEIVED_QTY" Nullable="true" />
+    <Property Type="Int32" Name="WAITING_ENTRY_QTY" Nullable="true" />
+    <Property Type="String" Name="FOLLOW_UP_DATE" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="COMPLETION_DATE" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SEND_TO_SIDE_NO" Nullable="true" />
+    <Property Type="String" Name="NOTES_SIDE_NO" Nullable="true" />
+  </ComplexType>
+</Schema>

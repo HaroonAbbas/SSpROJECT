@@ -1,0 +1,324 @@
+﻿<Window x:Class="SupplySystem.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SupplySystem" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+             FlowDirection="RightToLeft"
+        Title="MainWindow" Height="650" Width="1000"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="Transparent" AllowsTransparency="True"
+        ResizeMode="NoResize" WindowState="Normal">
+    <Border CornerRadius="8"
+            MouseDown="Border_MouseDown"
+            Background="{DynamicResource PrimaryBackgroundColor}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Start: GridColum Left-->
+            <Border CornerRadius="8 0 0 8" Background="{DynamicResource SecundaryBackgroundColor}">
+                <Grid x:Name="gridMenu" Width="60">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Logo -->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top">
+                        <materialDesign:PackIcon Kind="CircleDouble"
+                                                 Foreground="{DynamicResource PrimaryBlueColor}"
+                                                 FontWeight="Bold" FontSize="20" VerticalAlignment="Center"
+                                                 Margin="16 0 0 0" Width="25" Height="25" />
+                        <Label Content="Orizon"
+                               Name="lbl_OrizonorUnitName"
+                               Foreground="{DynamicResource PrimaryBlueColor}"
+                               FontWeight="Bold" FontSize="20" VerticalAlignment="Center"
+                               HorizontalContentAlignment="Left" HorizontalAlignment="Left" 
+                               Margin="14 0 0 0"/>
+                    </StackPanel>
+
+                    <!-- Menu -->
+                    <ToggleButton x:Name="btnMenu"  HorizontalAlignment="Right" BorderThickness="0
+                                  " Background="Transparent" VerticalAlignment="Center" 
+                                  Style="{StaticResource MenuIconStyle}" Margin="0 0 15 0">
+                        <ToggleButton.Triggers>
+                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="HideStackPanel">
+                                        <DoubleAnimation Storyboard.TargetName="gridMenu" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="200" To="60" Duration="0:0:0.3">
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="ShowStackPanel">
+                                        <DoubleAnimation Storyboard.TargetName="gridMenu" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="60" To="250" Duration="0:0:0.3">
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ToggleButton.Triggers>
+                    </ToggleButton>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" HorizontalAlignment="Left">
+                            <Button Foreground="{x:Null}"
+                                Background="{x:Null}" BorderBrush="{x:Null}"
+                                Name="btnSupplyBonds"
+                                Click="btnSupplyBonds_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Money" Foreground="Black"
+                                                     Width="25" Height="25"/>
+                                    <TextBlock Text="سندات التموين" Foreground="Black" Padding="5 0 0 0"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Left">
+                            <Button Foreground="{x:Null}"
+                                Background="{x:Null}" BorderBrush="{x:Null}"
+                                Name="btnSpareParts"
+                                Click="btnSpareParts_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Tools" Foreground="Black"
+                                                     Width="25" Height="25"/>
+                                    <TextBlock Text="قطع الغيار" Foreground="Black" Padding="5 0 0 0"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" HorizontalAlignment="Left">
+                            <Button Foreground="{x:Null}"
+                                Background="{x:Null}" BorderBrush="{x:Null}"
+                                Name="btnServiceProviders"
+                                Click="btnServiceProviders_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ServiceToolbox" Foreground="Black"
+                                                     Width="25" Height="25"/>
+                                    <TextBlock Text="الجهات المقدمة للخدمة" Foreground="Black" Padding="5 0 0 0"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" HorizontalAlignment="Left">
+                            <Button Foreground="{x:Null}"
+                                Background="{x:Null}" BorderBrush="{x:Null}"
+                                Name="btnBeneficiaries"
+                                Click="btnBeneficiaries_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="RoomService" Foreground="Black"
+                                                     Width="25" Height="25"/>
+                                    <TextBlock Text="الجهات المستفيدة" Foreground="Black" Padding="5 0 0 0"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" HorizontalAlignment="Left">
+                            <Button Foreground="{x:Null}"
+                                Background="{x:Null}" BorderBrush="{x:Null}"
+                                Name="btnBackUp"
+                                Click="btnBackUp_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Backup" Foreground="Black"
+                                                     Width="25" Height="25"/>
+                                    <TextBlock Text="النسخ الاحتياطي" Foreground="Black" Padding="5 0 0 0"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                    <StackPanel Visibility="Visible" Grid.Row="3" VerticalAlignment="Bottom" 
+                                Orientation="Horizontal"
+                                Width="200" Margin="0 0 0 20">
+                        <materialDesign:PackIcon Kind="User" Margin="5 8 0 0"/>
+                        <StackPanel Orientation="Vertical" Margin="8 0 0 0">
+                            <Label Name="lbl_UserName" Content="هارون" Foreground="{DynamicResource TextPrimaryColor}" FontSize="14" FontWeight="SemiBold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                            <Label Name="lbl_UserEmail" 
+                                   Margin="0 -5 0 0"
+                                   Content="0234234" Foreground="{DynamicResource PrimaryGrayColor}" FontSize="11" FontWeight="Regular" HorizontalContentAlignment="Center" HorizontalAlignment="Left" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <!-- End: GridColum Left-->
+
+            <!-- Start: GridColumn Rigth -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!-- Start: Button Close | Restore | Minimize -->
+                <Grid Grid.Column="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                        <TextBlock Text="اسم الوحدة:" Margin="5 8 5 0"
+                                   FontSize="17"
+                                   Name="lbl_UnitName"
+                               HorizontalAlignment="Right"/>
+                        <TextBlock Text="UnitName" Margin="5 8 5 0"
+                                   FontSize="18"
+                                   Name="txt_UnitName"
+                               HorizontalAlignment="Right"/>
+                        <TextBlock Text="رمز الوحدة:" Margin="5 8 5 0"
+                                   FontSize="17"
+                                   Name="lbl_UnitIdName"
+                               HorizontalAlignment="Right"/>
+                        <TextBlock Text="UnitIdName" Margin="0 8 5 0"
+                                     FontSize="18"
+                                   Name="txt_UnitIdName"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft">
+                        <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}"
+                            Content="{DynamicResource minimize}" 
+                    Click="btnMinimize_Click" Margin="0,2,0,3"/>
+                        <Button x:Name="btnRestore" Margin="5,0" Click="btnRestore_Click">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButtonsStyle}">
+                                    <Setter Property="Content" Value="{DynamicResource maximize}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=home, Path=WindowState}" Value="Maximized">
+                                            <Setter Property="Content" Value="{DynamicResource restore}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="btnClose_Click" Tag="IsCloseButton"/>
+
+
+                    </StackPanel>
+                </Grid>
+                <!-- End: Button Close | Restore | Minimize -->
+
+                <Border Grid.Row="1" Margin="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="1">
+                            <Border Grid.Row="1" Margin="0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="5"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Separator Height="1"/>
+
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="10"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="10"/>
+                                        </Grid.RowDefinitions>
+                                        <dx:DXTabControl TabAdding="tabControl_TabAdding" Name="tabControl" Padding="0" Margin="0" >
+                                            <dx:DXTabControl.View>
+                                                <dx:TabControlStretchView HeaderLocation="Top" HideButtonShowMode="InAllTabs" NewButtonShowMode="NoWhere" DragDropMode="Full" />
+                                            </dx:DXTabControl.View>
+                                        </dx:DXTabControl>
+
+                                        <StackPanel Grid.Row="2" Margin="10" Orientation="Horizontal" Name="stkBtns"
+                                        HorizontalAlignment="Center">
+                                            <Button Name="BtnNewFrom" Margin="5 0 5 0"
+                            Click="BtnNewFrom_Click"
+                            Height="40" Width="80" Foreground="{x:Null}" BorderBrush="Black"
+                            Background="{x:Null}" Padding="0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="اضافة من"  Foreground="Black"/>
+                                                    <materialDesign:PackIcon Kind="PlusBold" Margin="5 3 0 0" Foreground="Black"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Name="BtnNew"
+                            Click="BtnNew_Click"
+                            Height="40" Width="80" Foreground="{x:Null}" BorderBrush="Black"
+                            Background="{x:Null}" Padding="0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="جديد"  Foreground="Black"/>
+                                                    <materialDesign:PackIcon Kind="Plus" Margin="5 3 0 0" Foreground="Black"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Name="BtnUpdate" Margin="5 0 5 0"
+                            Click="BtnUpdate_Click"
+                            Height="40" Width="80" Foreground="{x:Null}" BorderBrush="Black"
+                            Background="{x:Null}" Padding="0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="تعديل"  Foreground="Black"/>
+                                                    <materialDesign:PackIcon Kind="Edit" Margin="5 3 0 0" Foreground="Black"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Name="BtnSave" Margin="5 0 5 0"
+                            Click="BtnSave_Click"
+                            Height="40" Width="80" Foreground="{x:Null}" BorderBrush="Black"
+                            Background="{x:Null}" Padding="0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="حفظ"  Foreground="Black"/>
+                                                    <materialDesign:PackIcon Kind="ContentSave" Margin="5 3 0 0" Foreground="Black"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Name="BtnDelete" Margin="5 0 5 0"
+                            Click="BtnDelete_Click"
+                            Height="40" Width="80" Foreground="{x:Null}" BorderBrush="Black"
+                            Background="{x:Null}" Padding="0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="حذف"  Foreground="Black"/>
+                                                    <materialDesign:PackIcon Kind="Delete" Margin="5 3 0 0" Foreground="Black"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Name="BtnSearch" Margin="5 0 5 0"
+                            Click="BtnSearch_Click"
+                            Height="40" Width="80" Foreground="{x:Null}" BorderBrush="Black"
+                            Background="{x:Null}" Padding="0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="بحث"  Foreground="Black"/>
+                                                    <materialDesign:PackIcon Kind="Search" Margin="5 3 0 0" Foreground="Black"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Name="BtnPrint" Margin="5 0 5 0"
+                            Click="BtnPrint_Click"
+                            Height="40" Width="80" Foreground="{x:Null}" BorderBrush="Black"
+                            Background="{x:Null}" Padding="0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="طباعة"  Foreground="Black"/>
+                                                    <materialDesign:PackIcon Kind="Printer" Margin="5 3 0 0" Foreground="Black"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Name="BtnUndo" Margin="5 0 5 0"
+                            Click="BtnUndo_Click"
+                            Height="40" Width="80" Foreground="{x:Null}" BorderBrush="Black"
+                            Background="{x:Null}" Padding="0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="تراجع"  Foreground="Black"/>
+                                                    <materialDesign:PackIcon
+                                            Name="PackIconUnod"
+                                            Kind="Undo" Margin="5 3 0 0" Foreground="Black"/>
+                                                </StackPanel>
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>                      
+                    </Grid>
+                </Border>
+            </Grid>
+            <!-- Start: GridColumn Rigth -->
+        </Grid>
+    </Border>
+</Window>
+
